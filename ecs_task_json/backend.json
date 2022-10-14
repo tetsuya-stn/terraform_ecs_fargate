@@ -1,0 +1,74 @@
+[
+  {
+    "dnsSearchDomains": null,
+    "environmentFiles": null,
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "secretOptions": null,
+      "options": {
+        "awslogs-group": "/ecs/sbcntr-backend-tf",
+        "awslogs-region": "ap-northeast-1",
+        "awslogs-stream-prefix": "ecs"
+      }
+    },
+    "entryPoint": null,
+    "portMappings": [
+      {
+        "hostPort": 80,
+        "protocol": "tcp",
+        "containerPort": 80
+      }
+    ],
+    "command": null,
+    "linuxParameters": null,
+    "cpu": 256,
+    "environment": [
+      {
+        "name": "DB_NAME",
+        "value": "arn:aws:secretsmanager:ap-northeast-1:448346652527:secret:sbcntr/mysql-5ieFH9:dbname::"
+      }
+    ],
+    "resourceRequirements": null,
+    "ulimits": null,
+    "dnsServers": null,
+    "mountPoints": [],
+    "workingDirectory": null,
+    "secrets": [
+      {
+        "valueFrom": "arn:aws:secretsmanager:ap-northeast-1:448346652527:secret:sbcntr/mysql-5ieFH9:host::",
+        "name": "DB_HOST"
+      },
+      {
+        "valueFrom": "arn:aws:secretsmanager:ap-northeast-1:448346652527:secret:sbcntr/mysql-5ieFH9:password::",
+        "name": "DB_PASSWORD"
+      },
+      {
+        "valueFrom": "arn:aws:secretsmanager:ap-northeast-1:448346652527:secret:sbcntr/mysql-5ieFH9:username::",
+        "name": "DB_USERNAME"
+      }
+    ],
+    "dockerSecurityOptions": null,
+    "memory": null,
+    "memoryReservation": 512,
+    "volumesFrom": [],
+    "stopTimeout": null,
+    "image": "448346652527.dkr.ecr.ap-northeast-1.amazonaws.com/sbcntr-backend:v1",
+    "startTimeout": null,
+    "firelensConfiguration": null,
+    "dependsOn": null,
+    "disableNetworking": null,
+    "interactive": null,
+    "healthCheck": null,
+    "essential": true,
+    "links": null,
+    "hostname": null,
+    "extraHosts": null,
+    "pseudoTerminal": null,
+    "user": null,
+    "readonlyRootFilesystem": true,
+    "dockerLabels": null,
+    "systemControls": null,
+    "privileged": null,
+    "name": "app"
+  }
+]

@@ -1,0 +1,86 @@
+[
+  {
+    "dnsSearchDomains": [],
+    "environmentFiles": null,
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "secretOptions": null,
+      "options": {
+        "awslogs-group": "/ecs/sbcntr-frontend-def",
+        "awslogs-region": "ap-northeast-1",
+        "awslogs-stream-prefix": "ecs"
+      }
+    },
+    "entryPoint": [],
+    "portMappings": [
+      {
+        "hostPort": 80,
+        "protocol": "tcp",
+        "containerPort": 80
+      }
+    ],
+    "command": [],
+    "linuxParameters": null,
+    "cpu": 256,
+    "environment": [
+      {
+        "name": "APP_SERVICE_HOST",
+        "value": "http://internal-sbcntr-alb-internal-300708888.ap-northeast-1.elb.amazonaws.com"
+      },
+      {
+        "name": "NOTIF_SERVICE_HOST",
+        "value": "http://internal-sbcntr-alb-internal-300708888.ap-northeast-1.elb.amazonaws.com"
+      },
+      {
+        "name": "SESSION_SECRET_KEY",
+        "value": "41b678c65b37bf99c37bcab522802760"
+      }
+    ],
+    "resourceRequirements": null,
+    "ulimits": null,
+    "dnsServers": [],
+    "mountPoints": [],
+    "workingDirectory": null,
+    "secrets": [
+      {
+        "valueFrom": "arn:aws:secretsmanager:ap-northeast-1:448346652527:secret:sbcntr/mysql-5ieFH9:host::",
+        "name": "DB_HOST"
+      },
+      {
+        "valueFrom": "arn:aws:secretsmanager:ap-northeast-1:448346652527:secret:sbcntr/mysql-5ieFH9:dbname::",
+        "name": "DB_NAME"
+      },
+      {
+        "valueFrom": "arn:aws:secretsmanager:ap-northeast-1:448346652527:secret:sbcntr/mysql-5ieFH9:password::",
+        "name": "DB_PASSWORD"
+      },
+      {
+        "valueFrom": "arn:aws:secretsmanager:ap-northeast-1:448346652527:secret:sbcntr/mysql-5ieFH9:username::",
+        "name": "DB_USERNAME"
+      }
+    ],
+    "dockerSecurityOptions": [],
+    "memory": null,
+    "memoryReservation": 512,
+    "volumesFrom": [],
+    "stopTimeout": null,
+    "image": "448346652527.dkr.ecr.ap-northeast-1.amazonaws.com/sbcntr-frontend:dbv1",
+    "startTimeout": null,
+    "firelensConfiguration": null,
+    "dependsOn": null,
+    "disableNetworking": null,
+    "interactive": null,
+    "healthCheck": null,
+    "essential": true,
+    "links": [],
+    "hostname": null,
+    "extraHosts": null,
+    "pseudoTerminal": null,
+    "user": null,
+    "readonlyRootFilesystem": null,
+    "dockerLabels": null,
+    "systemControls": [],
+    "privileged": null,
+    "name": "app"
+  }
+]

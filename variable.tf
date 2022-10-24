@@ -11,6 +11,7 @@ locals {
     egress    = "sg-04062cfb0e6b3017f"
     ingress   = "sg-02d1208386f83fd17"
     internal  = "sg-0e0742955522547aa"
+    db        = "sg-0b94d8790bd8ac742"
   }
 
   subnet_ids = {

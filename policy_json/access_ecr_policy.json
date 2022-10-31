@@ -9,7 +9,8 @@
       ],
       "Resource": [
         "arn:aws:ecr:ap-northeast-1:448346652527:repository/sbcntr-backend",
-        "arn:aws:ecr:ap-northeast-1:448346652527:repository/sbcntr-frontend"
+        "arn:aws:ecr:ap-northeast-1:448346652527:repository/sbcntr-frontend",
+        "arn:aws:ecr:ap-northeast-1:448346652527:repository/sbcntr-base"
       ]
     },
     {
@@ -38,7 +39,8 @@
       ],
       "Resource": [
         "arn:aws:ecr:ap-northeast-1:448346652527:repository/sbcntr-backend",
-        "arn:aws:ecr:ap-northeast-1:448346652527:repository/sbcntr-frontend"
+        "arn:aws:ecr:ap-northeast-1:448346652527:repository/sbcntr-frontend",
+        "arn:aws:ecr:ap-northeast-1:448346652527:repository/sbcntr-base"
       ]
     }
   ]

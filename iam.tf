@@ -30,6 +30,18 @@ resource "aws_iam_role_policy_attachment" "cloud9_access_ecr_policy" {
   policy_arn = aws_iam_policy.access_ecr_policy.arn
 }
 
+# CodeCommit
+resource "aws_iam_policy" "access_codecommit_policy" {
+  name        = "sbcntr-AccessCodeCommitPolicy"
+  description = ""
+  policy      = file("./policy_json/access_codecommit_policy.json")
+}
+
+resource "aws_iam_role_policy_attachment" "cloud9_access_codecommit_policy" {
+  role       = aws_iam_role.cloud9.name
+  policy_arn = aws_iam_policy.access_codecommit_policy.arn
+}
+
 # CodeDeploy
 resource "aws_iam_role" "ecs_codedeploy" {
   name        = "CodeDeployRoleforECS"

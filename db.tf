@@ -8,7 +8,7 @@ resource "aws_rds_cluster" "sbcntr_db" {
   cluster_identifier      = "sbcntr-db"
   engine                  = "aurora-mysql"
   engine_version          = "5.7.mysql_aurora.2.10.2"
-  availability_zones      = ["ap-northeast-1a", "ap-northeast-1c"]
+  availability_zones      = ["ap-northeast-1a", "ap-northeast-1c", "ap-northeast-1d"]
   storage_encrypted       = true
   port                    = 3306
   db_subnet_group_name    = aws_db_subnet_group.sbcntr_db.name

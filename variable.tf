@@ -34,4 +34,12 @@ locals {
       "subnet-0bab39175a7b40e87", # sbcntr-subnet-private-db-1c
     ]
   }
+
+  waf_rule = {
+    AWSManagedRulesCommonRuleSet          = 0
+    AWSManagedRulesAmazonIpReputationList = 1
+    AWSManagedRulesAnonymousIpList        = 2
+    AWSManagedRulesKnownBadInputsRuleSet  = 3
+    AWSManagedRulesSQLiRuleSet            = 4
+  }
 }

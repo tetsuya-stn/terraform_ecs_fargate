@@ -1,0 +1,102 @@
+{
+  "containerDefinitions": [
+    {
+      "cpu": 256,
+      "environment": [],
+      "essential": true,
+      "image": "448346652527.dkr.ecr.ap-northeast-1.amazonaws.com/sbcntr-backend:2ad5fc9",
+      "logConfiguration": {
+        "logDriver": "awsfirelens"
+      },
+      "memoryReservation": 512,
+      "mountPoints": [],
+      "name": "app",
+      "portMappings": [
+        {
+          "containerPort": 80,
+          "hostPort": 80,
+          "protocol": "tcp"
+        }
+      ],
+      "readonlyRootFilesystem": true,
+      "secrets": [
+        {
+          "name": "DB_HOST",
+          "valueFrom": "arn:aws:secretsmanager:ap-northeast-1:448346652527:secret:sbcntr/mysql-5ieFH9:host::"
+        },
+        {
+          "name": "DB_NAME",
+          "valueFrom": "arn:aws:secretsmanager:ap-northeast-1:448346652527:secret:sbcntr/mysql-5ieFH9:dbname::"
+        },
+        {
+          "name": "DB_PASSWORD",
+          "valueFrom": "arn:aws:secretsmanager:ap-northeast-1:448346652527:secret:sbcntr/mysql-5ieFH9:password::"
+        },
+        {
+          "name": "DB_USERNAME",
+          "valueFrom": "arn:aws:secretsmanager:ap-northeast-1:448346652527:secret:sbcntr/mysql-5ieFH9:username::"
+        }
+      ],
+      "volumesFrom": []
+    },
+    {
+      "cpu": 64,
+      "environment": [
+        {
+          "name": "LOG_BUCKET_NAME",
+          "value": "sbcntr-firelens-logs"
+        },
+        {
+          "name": "APP_ID",
+          "value": "backend-def"
+        },
+        {
+          "name": "AWS_ACCOUNT_ID",
+          "value": "448346652527"
+        },
+        {
+          "name": "AWS_REGION",
+          "value": "ap-northeast-1"
+        },
+        {
+          "name": "LOG_GROUP_NAME",
+          "value": "/aws/ecs/sbcntr-backend-def"
+        }
+      ],
+      "essential": true,
+      "firelensConfiguration": {
+        "options": {
+          "config-file-type": "file",
+          "config-file-value": "/fluent-bit/custom.conf"
+        },
+        "type": "fluentbit"
+      },
+      "image": "448346652527.dkr.ecr.ap-northeast-1.amazonaws.com/sbcntr-base:log-router",
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/aws/ecs/sbcntr-firelens-container",
+          "awslogs-region": "ap-northeast-1",
+          "awslogs-stream-prefix": "firelens"
+        }
+      },
+      "memoryReservation": 128,
+      "mountPoints": [],
+      "name": "log_router",
+      "portMappings": [],
+      "user": "0",
+      "volumesFrom": []
+    }
+  ],
+  "cpu": "512",
+  "executionRoleArn": "arn:aws:iam::448346652527:role/ecsTaskExecutionRole",
+  "family": "sbcntr-backend-def",
+  "memory": "1024",
+  "networkMode": "awsvpc",
+  "placementConstraints": [],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "taskRoleArn": "arn:aws:iam::448346652527:role/sbcntr-ecsTaskRole",
+  "volumes": []
+}

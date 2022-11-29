@@ -1,0 +1,44 @@
+{
+  "deploymentConfiguration": {
+    "maximumPercent": 200,
+    "minimumHealthyPercent": 100
+  },
+  "deploymentController": {
+    "type": "CODE_DEPLOY"
+  },
+  "desiredCount": 1,
+  "enableECSManagedTags": false,
+  "enableExecuteCommand": false,
+  "healthCheckGracePeriodSeconds": 120,
+  "launchType": "FARGATE",
+  "loadBalancers": [
+    {
+      "containerName": "app",
+      "containerPort": 80,
+      "targetGroupArn": "arn:aws:elasticloadbalancing:ap-northeast-1:448346652527:targetgroup/sbcntr-tg-sbcntrdemo-green/b1a98e8ce9231c5e"
+    }
+  ],
+  "networkConfiguration": {
+    "awsvpcConfiguration": {
+      "assignPublicIp": "DISABLED",
+      "securityGroups": [
+        "sg-0cb41274911be6ec8"
+      ],
+      "subnets": [
+        "subnet-0a2c35141c30ae07d",
+        "subnet-06b0c0d55942e66ec"
+      ]
+    }
+  },
+  "placementConstraints": [],
+  "placementStrategy": [],
+  "platformFamily": "Linux",
+  "platformVersion": "1.4.0",
+  "schedulingStrategy": "REPLICA",
+  "serviceRegistries": [
+    {
+      "registryArn": "arn:aws:servicediscovery:ap-northeast-1:448346652527:service/srv-4yfsyf6kh63wkeru"
+    }
+  ],
+  "tags": []
+}
